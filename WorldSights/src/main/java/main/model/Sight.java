@@ -1,9 +1,14 @@
 package main.model;
 
+import lombok.Getter;
+import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "sights")
+@Getter
+@Setter
 public class Sight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,5 +20,4 @@ public class Sight {
     private SightType type;
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Town town;
-
 }

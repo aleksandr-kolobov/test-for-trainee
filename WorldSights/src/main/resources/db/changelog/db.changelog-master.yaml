@@ -1,0 +1,99 @@
+databaseChangeLog:
+- changeSet:
+    id: 1
+    author: postgres
+    changes:
+      - createTable:
+          tableName: towns
+          columns:
+            - column:
+                name: id
+                type: integer
+                autoIncrement: true
+                constraints:
+                  primaryKey: true
+                  nullable: false
+            - column:
+                name: name
+                type: varchar(50)
+                constraints:
+                  unique: true
+                  nullable: false
+            - column:
+                name: country
+                type: varchar(50)
+                constraints:
+                  nullable: false
+            - column:
+                name: subway
+                type: boolean
+                constraints:
+                  nullable: false
+            - column:
+                name: population
+                type: integer
+                constraints:
+                  nullable: false
+- changeSet:
+    id: 2
+    author: postgres
+    changes:
+      - createTable:
+          tableName: sights
+          columns:
+            - column:
+                name: id
+                type: integer
+                autoIncrement: true
+                constraints:
+                  primaryKey: true
+                  nullable: false
+            - column:
+                name: name
+                type: varchar(50)
+                constraints:
+                  unique: true
+                  nullable: false
+            - column:
+                name: description
+                type: varchar(500)
+                constraints:
+                  nullable: false
+            - column:
+                name: type
+                type: varchar(50)
+                constraints:
+                  nullable: false
+            - column:
+                name: date
+                type: date
+                constraints:
+                  nullable: false
+            - column:
+                name: town_id
+                type: integer
+                constraints:
+                  nullable: false
+- changeSet:
+    id: 3
+    author: postgres
+    comment: "Create noname town"
+    changes:
+      - insert:
+          tableName: towns
+          columns:
+            - column:
+                name: id
+                value: 0
+            - column:
+                name: name
+                value: "nonametown"
+            - column:
+                name: country
+                value: "nonamecountry"
+            - column:
+                name: subway
+                value: false
+            - column:
+                name: population
+                value: 0

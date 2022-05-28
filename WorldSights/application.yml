@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost/worldsights
+    url: jdbc:postgresql://localhost:5432/worldsights
     username: postgres
     password: testtest
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: validate
