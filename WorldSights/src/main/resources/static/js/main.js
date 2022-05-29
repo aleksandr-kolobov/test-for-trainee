@@ -1,81 +1,153 @@
-﻿/*$(function(){
+﻿$(function(){
 
-    const appendTarget = function(data){
-        var targetCode = '<a href="#" class="target-link" data-id="' +
-            data.id + '">' + data.name + '</a><br>';
-        $('#target-list')
-            .append('<div>' + targetCode + '</div>');
-    };
+    $('.add-town-button').click(function(){
+        $('.add-town-form').css('display', 'flex')
+    })
 
-    /*Loading targets on load page
-    $.get('/targets/', function(response){
-        for(i in response) {
-            appendTarget(response[i]);
-        }
-    });*/
-
-    //Show adding target form
-    $('#show-add-target-form').click(function(){
-        $('#target-form').css('display', 'flex');
-    });
-
-    //Closing adding target form
-    $('#target-form').click(function(event){
+    $('.add-town-form').click(function(event){
         if(event.target === this) {
-            $(this).css('display', 'none');
+            $(this).css('display', 'none')
         }
-    });
+    })
 
-    //Getting target
-    $(document).on('click', '.target-link', function(){
-        var link = $(this);
-        var targetId = link.data('id');
-        $.ajax({
-            method: "GET",
-            url: '/targets/' + targetId,
-            success: function(response){
-                var code = '<span>Время для выполнения:' + response.time + '</span>';
-                link.parent().append(code);
-            },
-            error: function(response){
-                if(response.status == 404) {
-                    alert('Дело под таким номером не найдено!');
-                }
-            }
-        });
-        return false;
-    });
-
-    //Adding target
-    $('#save-target').click(function(){
-        var data = $('#target-form form').serialize();
+    $('.save-add-town-button').click(function() {
+        var data = $('.add-town-form form').serialize();
         $.ajax({
             method: "POST",
-            url: '/targets/',
+            url: '/towns/',
             data: data,
-            success: function(response){
-                $('#target-form').css('display', 'none');
-                var target = {};
-                target.id = response;
-                var dataArray = $('#target-form form').serializeArray();
-                for(i in dataArray) {
-                    target[dataArray[i]['name']] = dataArray[i]['value'];
-                }
-                appendTarget(target);
+            success: function(response) {
+                $('.add-town-form').css('display', 'none');
             }
-        });
+        })
         return false;
-    });
+    })
 
-    //Delete targets
-    $('#delete-all-targets').click(function(){
+    $('.correct-name-town-button').click(function(){
+        $('.correct-name-town-form').css('display', 'flex')
+    })
+
+    $('.correct-name-town-form').click(function(event){
+        if(event.target === this) {
+            $(this).css('display', 'none')
+        }
+    })
+
+    $('.save-correct-name-town-button').click(function() {
+        var data = $('.correct-name-town-form form').serialize();
+        $.ajax({
+            method: "PATCH",
+            url: '/towns/',
+            data: data,
+            success: function(response) {
+                $('.correct-name-town-form').css('display', 'none');
+            }
+        })
+        return false;
+    })
+
+    $('.correct-id-town-button').click(function(){
+        $('.correct-id-town-form').css('display', 'flex')
+    })
+
+    $('.correct-id-town-form').click(function(event){
+        if(event.target === this) {
+            $(this).css('display', 'none')
+        }
+    })
+
+    $('.save-correct-id-town-button').click(function() {
+        var data = $('.correct-id-town-form form').serialize();
+        var dataArray = $('.correct-id-town-form form').serializeArray();
+        var id =dataArray[0]['value'];
+        $.ajax({
+            method: "PATCH",
+            url: '/towns/' + id,
+            data: data,
+            success: function(response) {
+                $('.correct-id-town-form').css('display', 'none');
+            }
+        })
+        return false;
+    })
+
+    $('.add-sight-button').click(function(){
+        $('.add-sight-form').css('display', 'flex')
+    })
+
+    $('.add-sight-form').click(function(event){
+        if(event.target === this) {
+            $(this).css('display', 'none')
+        }
+    })
+
+    $('.save-add-sight-button').click(function() {
+        var data = $('.add-sight-form form').serialize();
+        $.ajax({
+            method: "POST",
+            url: '/sights/',
+            data: data,
+            success: function(response) {
+                $('.add-sight-form').css('display', 'none');
+            }
+        })
+        return false;
+    })
+
+    $('.correct-sight-button').click(function(){
+        $('.correct-sight-form').css('display', 'flex')
+    })
+
+    $('.correct-sight-form').click(function(event){
+        if(event.target === this) {
+            $(this).css('display', 'none')
+        }
+    })
+
+    $('.save-correct-sight-button').click(function() {
+        var data = $('.correct-sight-form form').serialize();
+        var dataArray = $('.correct-sight-form form').serializeArray();
+        var id =dataArray[0]['value'];
+        $.ajax({
+            method: "PATCH",
+            url: '/sights/' + id,
+            data: data,
+            success: function(response) {
+                $('.correct-sight-form').css('display', 'none');
+            }
+        })
+        return false;
+    })
+
+    $('.delete-sight-button').click(function(){
+        $('.delete-sight-form').css('display', 'flex')
+    })
+
+    $('.delete-sight-form').click(function(event){
+        if(event.target === this) {
+            $(this).css('display', 'none')
+        }
+    })
+
+    $('.save-delete-sight-button').click(function() {
+        var data = $('.delete-sight-form form').serialize();
+        var dataArray = $('.delete-sight-form form').serializeArray();
+        var id =dataArray[0]['value'];
         $.ajax({
             method: "DELETE",
-            url: '/targets/',
-            success: function(response){
-                alert('Все удалено! Перезагрузите страницу!');
+            url: '/sights/' + id,
+            data: data,
+            success: function(response) {
+                $('.delete-sight-form').css('display', 'none');
             }
-        });
+        })
         return false;
-    });
-});*/
+    })
+
+
+
+
+
+
+
+})

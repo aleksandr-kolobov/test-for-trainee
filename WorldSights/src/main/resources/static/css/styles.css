@@ -1,14 +1,219 @@
 h1 {
-    font-size: 32pt;
+    font-size: 24pt;
     color: rgb(0,200,0);
 }
 
 h2 {
-    font-size: 24pt;
+    font-size: 12pt;
     color: rgb(0,0,200);
+    text-align: center;
 }
 
 h3 {
-    font-size: 16pt;
+    font-size: 12pt;
     color: rgb(200,0,0);
+    text-align: center;
 }
+
+a {
+    font-size: 16pt;
+    margin-left: 10px;
+}
+
+p {
+    margin-left: 10px;
+}
+
+button {
+    margin-bottom: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.oll {
+    display: flex;
+}
+
+.left {
+    font-size: 10pt;
+    width: 600px;
+    height: 600px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-right: 20px;
+    background-color: RGB(222,252,222);
+}
+
+.middle {
+    display: flex;
+    flex-flow: column;
+    width: 300px;
+    height: 600px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-right: 20px;
+    background-color: RGB(222,222,252);
+    overflow-y: scroll;
+}
+
+.right {
+    display: flex;
+    flex-flow: column;
+    width: 300px;
+    height: 600px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: RGB(252,222,222);
+    overflow-y: scroll;
+}
+
+.add-town-form {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #88888878;
+}
+
+.add-town-form form{
+    background-color: RGB(222,222,252);
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 200px;
+    padding: 20px;
+}
+
+.add-town-form label {
+    display: block;
+    margin-top: 10px;
+}
+
+.correct-name-town-form {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #88888878;
+}
+
+.correct-name-town-form form{
+    background-color: RGB(222,222,252);
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 200px;
+    padding: 20px;
+}
+
+.correct-name-town-form label {
+    display: block;
+    margin-top: 10px;
+}
+
+.correct-id-town-form {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #88888878;
+}
+
+.correct-id-town-form form{
+    background-color: RGB(222,222,252);
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 200px;
+    padding: 20px;
+}
+
+.correct-id-town-form label {
+    display: block;
+    margin-top: 10px;
+}
+
+.add-sight-form {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #88888878;
+}
+
+.add-sight-form form{
+    background-color: RGB(252,222,222);
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 200px;
+    padding: 20px;
+}
+
+.add-sight-form label {
+    display: block;
+    margin-top: 10px;
+}
+
+.correct-sight-form {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #88888878;
+}
+
+.correct-sight-form form{
+    background-color: RGB(252,222,222);
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 200px;
+    padding: 20px;
+}
+
+.correct-sight-form label {
+    display: block;
+    margin-top: 10px;
+}
+
+.delete-sight-form {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #88888878;
+}
+
+.delete-sight-form form{
+    background-color: RGB(252,222,222);
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 200px;
+    padding: 20px;
+}
+
+.delete-sight-form label {
+    display: block;
+    margin-top: 10px;
+}
+

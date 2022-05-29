@@ -5,13 +5,13 @@ import main.model.SightType;
 import main.model.Town;
 import main.model.dto.DtoSight;
 import main.model.dto.SightMapper;
-import main.model.repository.SightRepository;
-import main.model.repository.TownRepository;
+import main.repository.SightRepository;
+import main.repository.TownRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -22,18 +22,6 @@ public class SightController {
     private SightRepository sightRepository;
     @Autowired
     private TownRepository townRepository;
-
-/*    @GetMapping("/init")
-    public ResponseEntity<DtoSight> getTownsList(){
-        Sight sight = new Sight();
-        sight.setName("Zdkfjhklsdf BUILDING");
-        sight.setTown(townRepository.findById(0).get());
-        sight.setType(SightType.BUILDING);
-        sight.setDate(LocalDate.of(1933, 12, 9));
-        sight.setDescription("dflBUILDINGksdfgglk kddfgfgdhfhsgdfhfh");
-        sightRepository.save(sight);
-        return new ResponseEntity(SightMapper.map(sight), HttpStatus.OK);
-    }*/
 
     @GetMapping("/sights")
     public List<DtoSight> getSightsList(@RequestParam(defaultValue = "false") boolean sort
@@ -73,13 +61,20 @@ public class SightController {
 
     @PostMapping("/sights/")
     public ResponseEntity<DtoSight> addSight(DtoSight dtoSight) {
-        return new ResponseEntity(SightMapper.map(sightRepository.save(SightMapper.remap(dtoSight)))
-                , HttpStatus.OK);
+        Sight sight = new Sight();
+        sight.setName(dtoSight.getName());
+        sight.setDate(LocalDate.parse(dtoSight.getDate()));
+        sight.setDescription(dtoSight.getDescription());
+        sight.setType(SightType.valueOf(dtoSight.getType().toUpperCase()));
+        String str = dtoSight.getTown();
+        str = str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
+        Optional<Town> optional = townRepository.findByName(str);
+        sight.setTown(optional.isPresent() ? optional.get() : townRepository.findById(0).get());
+        return new ResponseEntity(SightMapper.map(sightRepository.save(sight)), HttpStatus.OK);
     }
 
     @PatchMapping("/sights/{id}")
-    public ResponseEntity<DtoSight> correctSight(@PathVariable int id
-            , @RequestParam(defaultValue = "") String description) {
+    public ResponseEntity<DtoSight> correctSight(@PathVariable int id, String description) {
         Optional<Sight> optional = sightRepository.findById(id);
         if (optional.isPresent() && !description.isEmpty()) {
             Sight sight = optional.get();

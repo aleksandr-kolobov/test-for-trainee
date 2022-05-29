@@ -1,4 +1,4 @@
-package main.model.repository;
+package main.repository;
 
 import main.model.Sight;
 import org.springframework.data.jpa.repository.JpaRepository;
