@@ -69,7 +69,7 @@ public class SightController {
         String str = dtoSight.getTown();
         str = str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
         Optional<Town> optional = townRepository.findByName(str);
-        sight.setTown(optional.isPresent() ? optional.get() : townRepository.findById(0).get());
+        sight.setTown(optional.isPresent() ? optional.get() : townRepository.getById(0));
         return new ResponseEntity(SightMapper.map(sightRepository.save(sight)), HttpStatus.OK);
     }
 

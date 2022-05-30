@@ -18,6 +18,6 @@ public class Sight {
     private String description;
     @Enumerated(EnumType.STRING)
     private SightType type;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Town town;
 }

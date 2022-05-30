@@ -77,7 +77,7 @@ databaseChangeLog:
 - changeSet:
     id: 3
     author: postgres
-    comment: "Create noname town"
+    comment: "Create Noname Town"
     changes:
       - insert:
           tableName: towns
@@ -87,10 +87,10 @@ databaseChangeLog:
                 value: 0
             - column:
                 name: name
-                value: "nonametown"
+                value: "Nonametown"
             - column:
                 name: country
-                value: "nonamecountry"
+                value: "Nonamecountry"
             - column:
                 name: subway
                 value: false
