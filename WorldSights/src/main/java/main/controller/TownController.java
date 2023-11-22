@@ -1,43 +1,27 @@
-﻿package main.controller;
-
+package main.controller;
 
 import main.model.Town;
-
 import main.repository.TownRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
-
 import org.springframework.http.ResponseEntity;
-
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
-
 import java.util.Comparator;
-
 import java.util.List;
 import java.util.Optional;
 
-
-
 @RestController
-
 public class TownController {
 
-
     @Autowired
-
     private TownRepository townRepository;
 
-
-
     @GetMapping("/towns")
-
     public List<Town> getTownsList(@RequestParam(defaultValue = "false") boolean sort){
 
-       ArrayList<Town> arrayList = new ArrayList<>();
+        ArrayList<Town> arrayList = new ArrayList<>();
 
         arrayList.addAll(townRepository.findAll());
 
@@ -100,7 +84,7 @@ public class TownController {
 
 /*    @PostMapping("/towns/")
 
-    public HashMap<String, Boolean> addTown(Town town) {
+    public HashMap<String, Boolean> addTown(Town1 town) {
 
         townRepository.save(town);
 
@@ -111,7 +95,7 @@ public class TownController {
 
     @PostMapping("/towns/")
 
-    public HashMap<String, Integer> addTown(Town town) {
+    public HashMap<String, Integer> addTown(Town1 town) {
 
         return Map.of("result", townRepository.save(town).getId());
 
